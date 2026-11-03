@@ -9,15 +9,15 @@ const base = {
 };
 
 describe("parseServerEnv", () => {
-  it("accepts empty Twilio vars (mock mode)", () => {
+  it("accepts empty Telnyx vars (mock mode)", () => {
     const env = parseServerEnv({
       ...base,
-      TWILIO_ACCOUNT_SID: "",
-      TWILIO_AUTH_TOKEN: "",
-      TWILIO_PHONE_NUMBER: "",
-      TWILIO_MESSAGING_SERVICE_SID: "",
+      TELNYX_API_KEY: "",
+      TELNYX_PUBLIC_KEY: "",
+      TELNYX_PHONE_NUMBER: "",
+      TELNYX_MESSAGING_PROFILE_ID: "",
     });
-    expect(env.TWILIO_ACCOUNT_SID).toBeUndefined();
+    expect(env.TELNYX_API_KEY).toBeUndefined();
     expect(env.DEFAULT_COUNTRY_CODE).toBe("1");
   });
 
@@ -28,6 +28,6 @@ describe("parseServerEnv", () => {
   });
 
   it("rejects a malformed phone number", () => {
-    expect(() => parseServerEnv({ ...base, TWILIO_PHONE_NUMBER: "555" })).toThrow(/E\.164/);
+    expect(() => parseServerEnv({ ...base, TELNYX_PHONE_NUMBER: "555" })).toThrow(/E\.164/);
   });
 });

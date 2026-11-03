@@ -12,11 +12,11 @@ export const serverEnvSchema = z.object({
   NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(1),
   SUPABASE_SERVICE_ROLE_KEY: z.string().min(1),
 
-  // Twilio is optional: without it the app runs in mock mode.
-  TWILIO_ACCOUNT_SID: optional(z.string().startsWith("AC")),
-  TWILIO_AUTH_TOKEN: optional(z.string().min(1)),
-  TWILIO_PHONE_NUMBER: optional(e164),
-  TWILIO_MESSAGING_SERVICE_SID: optional(z.string().startsWith("MG")),
+  // Telnyx is optional: without it the app runs in mock mode (messages stored, nothing sent).
+  TELNYX_API_KEY: optional(z.string().min(1)),
+  TELNYX_PUBLIC_KEY: optional(z.string().min(1)),
+  TELNYX_PHONE_NUMBER: optional(e164),
+  TELNYX_MESSAGING_PROFILE_ID: optional(z.string().min(1)),
   DEFAULT_COUNTRY_CODE: z.preprocess(
     (v) => (v === "" || v === undefined ? "1" : v),
     z.string().regex(/^\d{1,3}$/),

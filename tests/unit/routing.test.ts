@@ -31,12 +31,7 @@ describe("decideRoute", () => {
     });
   });
   it("leaves webhook, cron and API-key routes to their own auth", () => {
-    for (const p of [
-      "/api/twilio/inbound",
-      "/api/twilio/status",
-      "/api/cron/keepalive",
-      "/api/v1/messages",
-    ]) {
+    for (const p of ["/api/webhooks/telnyx", "/api/cron/keepalive", "/api/v1/messages"]) {
       expect(isPublicPath(p)).toBe(true);
       expect(decideRoute({ pathname: p, ...anon })).toEqual({ action: "next" });
     }

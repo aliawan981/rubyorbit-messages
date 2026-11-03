@@ -1,6 +1,6 @@
 /** Pure routing rules for the request proxy, kept separate so they can be unit tested. */
 
-const PUBLIC_PREFIXES = ["/login", "/api/twilio/", "/api/cron/", "/api/v1/"];
+const PUBLIC_PREFIXES = ["/login", "/api/webhooks/", "/api/cron/", "/api/v1/"];
 
 export function isPublicPath(pathname: string): boolean {
   return PUBLIC_PREFIXES.some(

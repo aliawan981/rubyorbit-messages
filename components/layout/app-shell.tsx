@@ -2,6 +2,7 @@ import { Contact, Inbox, LogOut, Settings } from "lucide-react";
 import Link from "next/link";
 import { logoutAction } from "@/app/login/actions";
 import { Logo } from "@/components/brand/logo";
+import { InstallButton } from "@/components/pwa/install-button";
 import type { CurrentMember } from "@/lib/auth/session";
 
 const NAV = [
@@ -35,11 +36,12 @@ export function AppShell({
             </Link>
           ))}
         </nav>
-        <div className="md:mt-auto md:border-t md:pt-3">
+        <div className="flex items-center md:mt-auto md:flex-col md:items-stretch md:border-t md:pt-3">
           <p className="hidden truncate text-sm font-medium md:block">{member.displayName}</p>
           <p className="text-muted-foreground hidden truncate text-xs md:block">
             {member.orgName} · {member.role}
           </p>
+          <InstallButton />
           <form action={logoutAction}>
             <button
               type="submit"

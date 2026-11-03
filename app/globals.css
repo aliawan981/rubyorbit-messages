@@ -123,6 +123,9 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* Keep content clear of the iPhone notch and home bar in the installed app. */
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+      env(safe-area-inset-left);
   }
   html {
     @apply font-sans;
